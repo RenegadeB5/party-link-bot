@@ -64,6 +64,12 @@ client.on('messageReactionAdd', (reaction, user) => {
     }
 });     
 
+client.on ('message', message => { 
+  if (message.channel === message.guild.channels.find("name", "art") {
+      message.react('🔺');    
+  }
+});
+
 client.on ('message', message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();  
