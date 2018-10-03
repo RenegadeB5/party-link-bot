@@ -25,7 +25,6 @@ client.on ('message', message => {
               const embed = new Discord.RichEmbed()
               .setColor(0x00FF00)
               .setThumbnail(link)
-              .setURL(link)
               .setFooter('diep.io party link')
               .setTitle('Party Link')
               .setAuthor(owner)
@@ -52,7 +51,7 @@ client.on('messageReactionAdd', (reaction, user) => {
         let dmsend = dm[dm.length-1];
         let party = reaction.users.map(r => r.lastMessageID);
         let partysend = party[party.length-1];
-        client.users.get(dmsend).send(((reaction.message.embeds).map(r => r.url))[0])
+        client.users.get(dmsend).send(((reaction.message.embeds).map(r => r.thumbnail))[0])
         let log1 = reaction.users.map(r => r.username)
         let log2 = reaction.users.map(r => r.discriminator)
         let loguser = log1[log1.length-1] + '#' + log2[log2.length-1]
