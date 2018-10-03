@@ -39,7 +39,7 @@ client.on ('message', message => {
                   const response = await linkdb_channel.fetchMessages()
                   console.log(response.map(r => r.content))
                   }
-              console.log(links);
+              links();
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
