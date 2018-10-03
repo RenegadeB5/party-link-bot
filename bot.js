@@ -51,6 +51,7 @@ client.on ('message', message => {
               }
               else {
                   message.author.send('You currently have a link posted, type .delete in the commands channel to delete your current link.');
+              }
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
