@@ -38,11 +38,9 @@ client.on ('message', message => {
               async function links() {
                   const response = await linkdb_channel.fetchMessages()
                   const linksend = response.map(r => r.content)
-                  const linksent = []
                   for (var i in linksend) {
-                      linksent.concat(i)
+                      console.log(i)
                   }
-                  console.log(linksent)
               }
               links();
           }
