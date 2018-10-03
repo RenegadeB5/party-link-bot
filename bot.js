@@ -30,8 +30,8 @@ client.on ('message', message => {
               .addField("Gamemode", gamemode, true)
               .addField("Region", region, true)
               .setTimestamp()
-              link_channel.send({embed})
               message.delete();
+              link_channel.send({embed})
               .then(function (message) {
                   message.react('🔗')
                   });
