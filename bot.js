@@ -12,39 +12,39 @@ client.on('ready', () => {
     linkdb_channel = client.channels.get('496855574940614657');
 });
 client.on ('message', message => {
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();  
-  if (command === "link") {
-      let gamemode = args[0];
-      let region = args[1];
-      let link = args[2];
-      let verify = message.guild.roles.find("name", "link access")
-      if (message.member.roles.has(verify.id)) {
-          if (link.substr(0, 8) === 'https://') {
-              let owner = message.member.user.tag
-              const embed = new Discord.RichEmbed()
-              .setColor(0x00FF00)
-              .setFooter('diep.io party link')
-              .setTitle('Party Link')
-              .setAuthor(owner)
-              .addField("Gamemode", gamemode, true)
-              .addField("Region", region, true)
-              .setTimestamp()
-              message.delete();
-              link_channel.send({embed})
-              .then(function (message) {
-                  message.react('🔗')
-                  });
-              linkdb_channel.send(message.author.id + ' ' + link);
-              }
-          }
-          else {
-              message.channel.send('Please include \"https://\" in your link.');
-          }
-      }
-      else {
-              message.author.send('You are not authorized to post links.');
-      }          
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();  
+    if (command === "link") {
+        let gamemode = args[0];
+        let region = args[1];
+        let link = args[2];
+        let verify = message.guild.roles.find("name", "link access")
+        if (message.member.roles.has(verify.id)) {
+            if (link.substr(0, 8) === 'https://') {
+                let owner = message.member.user.tag
+                const embed = new Discord.RichEmbed()
+                .setColor(0x00FF00)
+                .setFooter('diep.io party link')
+                .setTitle('Party Link')
+                .setAuthor(owner)
+                .addField("Gamemode", gamemode, true)
+                .addField("Region", region, true)
+                .setTimestamp()
+                message.delete();
+                link_channel.send({embed})
+                  .then(function (message) {
+                    message.react('🔗')
+                    });
+                linkdb_channel.send(message.author.id + ' ' + link);
+                }
+            }
+            else {
+                message.channel.send('Please include \"https://\" in your link.');
+            }
+        }
+        else {
+                message.author.send('You are not authorized to post links.');
+        }          
 });    
 
 client.on('messageReactionAdd', (reaction, user) => {
