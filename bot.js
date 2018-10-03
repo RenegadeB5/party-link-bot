@@ -56,8 +56,7 @@ client.on('messageReactionAdd', (reaction, user) => {
         let log1 = reaction.users.map(r => r.username)
         let log2 = reaction.users.map(r => r.discriminator)
         let loguser = log1[log1.length-1] + '#' + log2[log2.length-1]
-        console.log(loguser);
-        console.log('-----------------------');
+        log_channel.send(loguser + ' ' + 'has joined' + ' ' + ((reaction.message.embeds).map(r => r.url))[0]);
         console.log(((reaction.message.embeds).map(r => r.title))[0]);
         console.log('--------------------');
     }
@@ -78,7 +77,7 @@ client.on ('message', message => {
       .setColor(0x00FF00)
       .setFooter('diep.io party link bot.')
       .setTitle('Party Link Bot Commands')
-      .setAuthor('ReneageBB')
+      .setAuthor('RenegadeBB')
       .addField('!link', 'Usage: !link <gamemode> <region> <link> \n(Link must include \"https://\")', true)
       .addField('Recieving links', 'React to the link you would like to join and you will be messaged with the link. \nYou must have the \"link access\" role to post and recieve links.', true)
       .setTimestamp()
