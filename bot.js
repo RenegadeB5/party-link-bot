@@ -35,9 +35,9 @@ client.on ('message', message => {
                   message.react('🔗')
                   });
               linkdb_channel.send(message.author.id + ' ' + link);
-              function links() {
-                  linkdb_channel.fetchMessages()
-                      .then(messages => return(messages.map(r => r.content)))
+              async function links() {
+                  const response = await linkdb_channel.fetchMessages()
+                  console.log(response.map(r => r.content))
                   }
               console.log(links);
           }
