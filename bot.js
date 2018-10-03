@@ -55,9 +55,7 @@ client.on('messageReactionAdd', (reaction, user) => {
         let log1 = reaction.users.map(r => r.username)
         let log2 = reaction.users.map(r => r.discriminator)
         let loguser = log1[log1.length-1] + '#' + log2[log2.length-1]
-        log_channel.send(loguser + ' ' + 'has joined' + ' ' + ((reaction.message.embeds).map(r => r.url))[0]);
-        console.log(((reaction.message.embeds).map(r => r.title))[0]);
-        console.log('--------------------');
+        console.log(reaction.message.embeds);
     }
 });     
 
