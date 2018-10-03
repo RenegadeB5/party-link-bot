@@ -24,6 +24,7 @@ client.on ('message', message => {
               let owner = message.member.user.tag
               const embed = new Discord.RichEmbed()
               .setColor(0x00FF00)
+              .setThumbnail(link)
               .setURL(link)
               .setFooter('diep.io party link')
               .setTitle('Party Link')
