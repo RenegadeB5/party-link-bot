@@ -62,11 +62,6 @@ client.on('messageReactionAdd', (reaction, user) => {
     }
 });     
 
-client.on ('message', message => { 
-  if ((message.channel === message.guild.channels.find("name", "art"))&&(message.attachments.size >= 1)) {
-      message.react('🔺');
-  }
-});
 
 client.on ('message', message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
