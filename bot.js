@@ -35,9 +35,9 @@ client.on ('message', message => {
                   message.react('🔗')
                   });
               linkdb_channel.send(message.author.id + ' ' + link);
-              var links = []
+              var links;
               linkdb_channel.fetchMessages()
-                  .then(messages => links.concat(messages.map(r => r.content)))
+                  .then(messages => links = (messages.map(r => r.content)))
               console.log(links);
           }
           else {
