@@ -31,7 +31,6 @@ client.on ('message', message => {
               .addField("Gamemode", gamemode, true)
               .addField("Region", region, true)
               .addField("Link", link, true)
-              .addField("Current Members", ' ', true)
               .setTimestamp()
               link_channel.send({embed})
               .then(function (message) {
