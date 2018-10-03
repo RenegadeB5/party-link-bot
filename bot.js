@@ -42,8 +42,8 @@ client.on ('message', message => {
                   for (var i in linksend) {
                       linksent.concat(i)
                   }
-              }
                   console.log(linksent)
+              }
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
