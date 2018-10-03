@@ -37,9 +37,8 @@ client.on ('message', message => {
               linkdb_channel.send(message.author.id + ' ' + link);
               var links = {}
               linkdb_channel.fetchMessages()
-                  .then(messages => links.push(messages.map(r => r.content))) {
-                      console.log(links);
-                  }
+                  .then(messages => links.push(messages.map(r => r.content)))
+              console.log(links);
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
