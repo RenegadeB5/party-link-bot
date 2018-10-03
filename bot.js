@@ -36,18 +36,18 @@ client.on ('message', message => {
                   message.react('🔗')
                   });
               linkdb_channel.send(message.author.id + ' ' + link);
-              async function links() {
+              async function links(userid) {
                   const response = await linkdb_channel.fetchMessages()
                   const linksend = response.map(r => r.content)
                   var linkcount = 0
                   linksend.forEach(function (message) {
-                      if (((message.split(" "))[0]) === '259368804293935104') {
+                      if (((message.split(" "))[0]) === userid) {
                           linkcount += 1
                           }
                       console.log(linkcount);
                       });
               }
-              links();
+              links('259368804293935104');
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
