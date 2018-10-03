@@ -42,6 +42,7 @@ client.on ('message', message => {
                   for (var i in linksend) {
                       linksent.concat(i)
                   }
+              }
                   console.log(linksent)
           }
           else {
