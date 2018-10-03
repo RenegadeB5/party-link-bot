@@ -30,7 +30,6 @@ client.on ('message', message => {
               .setAuthor(owner)
               .addField("Gamemode", gamemode, true)
               .addField("Region", region, true)
-              .addField("Link", link, true)
               .setTimestamp()
               link_channel.send({embed})
               .then(function (message) {
