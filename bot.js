@@ -64,7 +64,7 @@ client.on('messageReactionAdd', (reaction, user) => {
               if (((message.split(" "))[0]) === userid) {
                   console.log((message.split(" "))[1]);
                   }
-              });
+          });
       }
     }
 });     
