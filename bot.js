@@ -37,9 +37,13 @@ client.on ('message', message => {
               linkdb_channel.send(message.author.id + ' ' + link);
               async function links() {
                   const response = await linkdb_channel.fetchMessages()
-                  return response.map(r => r.content)
+                  const linksend = response.map(r => r.content)
                   }
-              console.log(await links());
+              await links();
+              function linksent() {
+                  console.log(links());
+              }
+              setTimeout(linksent, 2000);
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
