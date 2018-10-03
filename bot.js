@@ -2,16 +2,14 @@ const Discord = require('discord.js');
 const prefix = ".";
 var client = new Discord.Client();
 var link_channel;
-var log_channel;
 var linkdb_channel;
 
 client.on('ready', () => {
     const guildNames = client.guilds.map(g => g.name).join("\n")
     client.user.setPresence({ game: { name: process.env.playing, type: 0 } });
     console.log('successfully Logged In As Link Bot!');
-    link_channel = client.channels.find("name", "member-links");
-    log_channel = client.channels.find("name", "link-logs");
-    linkdb_channel = client.channels.find("name", "party-links-db");
+    link_channel = client.channels.get('451417402119421952');
+    linkdb_channel = client.channels.get('496855574940614657');
 });
 client.on ('message', message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -37,6 +35,9 @@ client.on ('message', message => {
                   message.react('🔗')
                   });
               linkdb_channel.send(message.author.id + ' ' + link);
+              for (message in linkdb_channel) {
+                  console.log(message.content);
+              }
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
