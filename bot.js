@@ -39,7 +39,7 @@ client.on ('message', message => {
                   const response = await linkdb_channel.fetchMessages()
                   const linksend = response.map(r => r.content)
                   linksend.forEach(function (message) {
-                      console.log(message.split("\\s+"));
+                      console.log(((message)[0]).split("\\s+"));
                       });
               }
               links();
