@@ -41,7 +41,7 @@ client.on ('message', message => {
                   const linksend = response.map(r => r.content)
                   var linkcount = 0
                   linksend.forEach(function (message) {
-                      if ((message.split(" "))[0]) === '259368804293935104') {
+                      if (((message.split(" "))[0]) === '259368804293935104') {
                           linkcount += 1
                           }
                       });
