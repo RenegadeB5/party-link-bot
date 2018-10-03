@@ -44,8 +44,8 @@ client.on ('message', message => {
                       if (((message.split(" "))[0]) === userid) {
                           linkcount += 1
                           }
-                      return linkcount
                       });
+                  return linkcount
               }
               links('259368804293935104').then(console.log);
           }
