@@ -44,10 +44,10 @@ client.on ('message', message => {
                       if (((message.split(" "))[0]) === userid) {
                           linkcount += 1
                           }
-                      console.log(linkcount);
+                      return linkcount
                       });
               }
-              links('259368804293935104');
+              links('259368804293935104').then(console.log);
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
