@@ -3,6 +3,7 @@ const prefix = ".";
 var client = new Discord.Client();
 var link_channel;
 var log_channel;
+var linkdb_channel;
 
 client.on('ready', () => {
     const guildNames = client.guilds.map(g => g.name).join("\n")
@@ -10,6 +11,7 @@ client.on('ready', () => {
     console.log('successfully Logged In As Link Bot!');
     link_channel = client.channels.find("name", "member-links");
     log_channel = client.channels.find("name", "link-logs");
+    linkdb_channel = client.channels.find("name", "party-links-db");
 });
 client.on ('message', message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -24,7 +26,6 @@ client.on ('message', message => {
               let owner = message.member.user.tag
               const embed = new Discord.RichEmbed()
               .setColor(0x00FF00)
-              .setImage(link)
               .setFooter('diep.io party link')
               .setTitle('Party Link')
               .setAuthor(owner)
@@ -35,6 +36,7 @@ client.on ('message', message => {
               .then(function (message) {
                   message.react('🔗')
                   });
+              linkdb_channel.send(message.author.id + ' ' + link);
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
@@ -51,11 +53,9 @@ client.on('messageReactionAdd', (reaction, user) => {
         let dmsend = dm[dm.length-1];
         let party = reaction.users.map(r => r.lastMessageID);
         let partysend = party[party.length-1];
-        client.users.get(dmsend).send(((reaction.message.embeds).map(r => r.image))[0])
         let log1 = reaction.users.map(r => r.username)
         let log2 = reaction.users.map(r => r.discriminator)
         let loguser = log1[log1.length-1] + '#' + log2[log2.length-1]
-        console.log(((reaction.message.embeds).map(r => r.image))[0]);
     }
 });     
 
