@@ -12,6 +12,17 @@ client.on('ready', () => {
     linkdb_channel = client.channels.get('496855574940614657');
 });
 client.on ('message', message => {
+  async function links(userid) {
+      const response = await linkdb_channel.fetchMessages()
+      const linksend = response.map(r => r.content)
+      var linkcount = 0
+      linksend.forEach(function (message) {
+          if (((message.split(" "))[0]) === userid) {
+              linkcount += 1
+              }
+          });
+      return linkcount
+  }
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();  
   if (command === "link") {
@@ -21,33 +32,25 @@ client.on ('message', message => {
       let verify = message.guild.roles.find("name", "link access")
       if (message.member.roles.has(verify.id)) {
           if (link.substr(0, 8) === 'https://') {
-              let owner = message.member.user.tag
-              const embed = new Discord.RichEmbed()
-              .setColor(0x00FF00)
-              .setFooter('diep.io party link')
-              .setTitle('Party Link')
-              .setAuthor(owner)
-              .addField("Gamemode", gamemode, true)
-              .addField("Region", region, true)
-              .setTimestamp()
-              message.delete();
-              link_channel.send({embed})
-              .then(function (message) {
-                  message.react('🔗')
-                  });
-              linkdb_channel.send(message.author.id + ' ' + link);
-              async function links(userid) {
-                  const response = await linkdb_channel.fetchMessages()
-                  const linksend = response.map(r => r.content)
-                  var linkcount = 0
-                  linksend.forEach(function (message) {
-                      if (((message.split(" "))[0]) === userid) {
-                          linkcount += 1
-                          }
+              if (links(message.author.id) < 1) {
+                  let owner = message.member.user.tag
+                  const embed = new Discord.RichEmbed()
+                  .setColor(0x00FF00)
+                  .setFooter('diep.io party link')
+                  .setTitle('Party Link')
+                  .setAuthor(owner)
+                  .addField("Gamemode", gamemode, true)
+                  .addField("Region", region, true)
+                  .setTimestamp()
+                  message.delete();
+                  link_channel.send({embed})
+                  .then(function (message) {
+                      message.react('🔗')
                       });
-                  return linkcount
+                  linkdb_channel.send(message.author.id + ' ' + link);
               }
-              links('259368804293935104').then(console.log);
+              else {
+                  message.author.send('You currently have a link posted, type .delete in the commands channel to delete your current link.');
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
