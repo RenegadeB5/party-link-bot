@@ -38,9 +38,9 @@ client.on ('message', message => {
               async function links() {
                   const response = await linkdb_channel.fetchMessages()
                   const linksend = response.map(r => r.content)
-                  for (var message in linksend) {
-                      console.log(message.content)
-                  }
+                  linksend.forEach(function (message) {
+                      console.log(message);
+                      });
               }
               links();
           }
