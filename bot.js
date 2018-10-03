@@ -44,6 +44,7 @@ client.on ('message', message => {
                       if (((message.split(" "))[0]) === '259368804293935104') {
                           linkcount += 1
                           }
+                      console.log(linkcount);
                       });
               }
               links();
