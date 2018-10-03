@@ -44,7 +44,7 @@ client.on ('message', message => {
       }
       else {
               message.author.send('You are not authorized to post links.');
-          }          
+      }          
 });    
 
 client.on('messageReactionAdd', (reaction, user) => {
