@@ -50,13 +50,6 @@ client.on ('message', message => {
 client.on('messageReactionAdd', (reaction, user) => {
     if(reaction.emoji.name === '🔗') {
       async function links(userid) {
-          let dm = reaction.users.map(r => r.id);
-          let dmsend = dm[dm.length-1];
-          let party = reaction.users.map(r => r.lastMessageID);
-          let partysend = party[party.length-1];
-          let log1 = reaction.users.map(r => r.username)
-          let log2 = reaction.users.map(r => r.discriminator)
-          let loguser = log1[log1.length-1] + '#' + log2[log2.length-1]
           const response = await linkdb_channel.fetchMessages()
           const linksend = response.map(r => r.content)
           linksend.forEach(function (message) {
