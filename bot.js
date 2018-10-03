@@ -43,9 +43,7 @@ client.on ('message', message => {
             }
         }
         else {      
-            message.author.send('You are not authorized to post links.');
-            catch(error) {
-                console.log(error);
+            message.author.send('You are not authorized to post links.').catch(error)
             }
         }          
 });    
