@@ -65,7 +65,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 });     
 
 client.on ('message', message => { 
-  if (message.attachments.size <= 5) {
+  if (message.attachments.size <= 0) {
       message.react('🔺');
       console.log(message.attachments.size);
   }
