@@ -35,10 +35,10 @@ client.on ('message', message => {
                   message.react('🔗')
                   });
               linkdb_channel.send(message.author.id + ' ' + link);
-              let links = []
               linkdb_channel.fetchMessages()
-                  .then(messages => links.push((messages.map(r => r.content))[0]))
-              console.log(links);
+                  .then for (var i in (messages => (messages.map(r => r.content)))) {
+                      console.log(i);
+                  }
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
