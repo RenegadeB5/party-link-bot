@@ -15,7 +15,6 @@ client.on ('message', message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();  
   if (command === "link") {
-      console.log(links(message.author.id));
       let gamemode = args[0];
       let region = args[1];
       let link = args[2];
