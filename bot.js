@@ -31,6 +31,7 @@ client.on ('message', message => {
               .addField("Region", region, true)
               .setTimestamp()
               link_channel.send({embed})
+              message.delete();
               .then(function (message) {
                   message.react('🔗')
                   });
@@ -38,8 +39,11 @@ client.on ('message', message => {
               async function links() {
                   const response = await linkdb_channel.fetchMessages()
                   const linksend = response.map(r => r.content)
+                  var linkcount = 0
                   linksend.forEach(function (message) {
-                      console.log((message.split(" "))[0]);
+                      if ((message.split(" "))[0]) === '259368804293935104') {
+                          linkcount += 1
+                          }
                       });
               }
               links();
