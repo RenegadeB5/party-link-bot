@@ -37,10 +37,12 @@ client.on ('message', message => {
               linkdb_channel.send(message.author.id + ' ' + link);
               async function links() {
                   const response = await linkdb_channel.fetchMessages()
-                  return response.map(r => r.content)
+                  const linksend = response.map(r => r.content)
+                  const linksent = []
+                  for (var i in linksend) {
+                      linksent.concat(i)
                   }
-              let linksend = links()
-              console.log(linksend)
+                  console.log(linksent)
           }
           else {
               message.channel.send('Please include \"https://\" in your link.');
