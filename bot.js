@@ -49,18 +49,19 @@ client.on ('message', message => {
 
 client.on('messageReactionAdd', (reaction, user) => {
     if(reaction.emoji.name === '🔗') {
-      async function links() {
-          const dm = reaction.users.map(r => r.id);
-          const dmsend = dm[dm.length-1];
-          const response = await linkdb_channel.fetchMessages()
-          const linksend = response.map(r => r.content)
-          linksend.forEach(function (message) {
-              if (((message.split(" "))[0]) === dmsend) {
-                  console.log((message.split(" "))[1]);
-                  }
-          })
-          links();
-      }
+        t
+        async function links() {
+            const dm = reaction.users.map(r => r.id);
+            const dmsend = dm[dm.length-1];
+            const response = await linkdb_channel.fetchMessages()
+            const linksend = response.map(r => r.content)
+            linksend.forEach(function (message) {
+                if (((message.split(" "))[0]) === dmsend) {
+                    console.log((message.split(" "))[1]);
+                    }
+            })
+        }
+        links();
     }
 });     
 
