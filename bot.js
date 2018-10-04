@@ -50,6 +50,8 @@ client.on ('message', message => {
 
 client.on('messageReactionAdd', (reaction, user) => {
     if(reaction.emoji.name === '🔗') {
+        let linkuser = client.user.get(reaction.users.map(r => r.id));
+        console.log(linkuser);
         async function links() {
             const dm = reaction.users.map(r => r.id);
             const dmsend = dm[dm.length-1];
@@ -57,8 +59,6 @@ client.on('messageReactionAdd', (reaction, user) => {
             const response = await linkdb_channel.fetchMessages()
             const linksend = response.map(r => r.content)
             linksend.forEach(function (message) {
-                console.log((message.split(" "))[0]);
-                console.log(linkid);
                 if (((message.split(" "))[0]) === linkid) {
                     client.users.get(dmsend).send((message.split(" "))[1]);
                     }
