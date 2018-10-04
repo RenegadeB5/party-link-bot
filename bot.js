@@ -41,10 +41,10 @@ client.on ('message', message => {
             else {
                 message.channel.send('Please include \"https://\" in your link.');
             }
-        }
         else {      
             message.author.send('You are not authorized to post links.').catch(console.error);
-            }          
+            }
+    }
 });    
 
 client.on('messageReactionAdd', (reaction, user) => {
