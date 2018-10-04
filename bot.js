@@ -56,6 +56,8 @@ client.on('messageReactionAdd', (reaction, user) => {
             const response = await linkdb_channel.fetchMessages()
             const linksend = response.map(r => r.content)
             linksend.forEach(function (message) {
+                console.log((message.split(" "))[0]);
+                console.log(linkid);
                 if (((message.split(" "))[0]) === linkid) {
                     client.users.get(dmsend).send((message.split(" "))[1]);
                     }
