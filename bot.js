@@ -29,7 +29,7 @@ client.on ('message', message => {
                 .setAuthor(message.author.id)
                 .addField("Gamemode", gamemode, true)
                 .addField("Region", region, true)
-                .addfield('Owner', owner, true)
+                .addField('Owner', owner, true)
                 .setTimestamp()
                 message.delete();
                 link_channel.send({embed})
