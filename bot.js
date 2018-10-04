@@ -24,11 +24,12 @@ client.on ('message', message => {
                 let owner = message.member.user.tag
                 const embed = new Discord.RichEmbed()
                 .setColor(0x00FF00)
-                .setFooter(message.author.id)
+                .setFooter('diep.io party link.')
                 .setTitle('Party Link')
-                .setAuthor(owner)
+                .setAuthor(message.author.id)
                 .addField("Gamemode", gamemode, true)
                 .addField("Region", region, true)
+                .addfield('Owner', owner, true)
                 .setTimestamp()
                 message.delete();
                 link_channel.send({embed})
@@ -52,7 +53,7 @@ client.on('messageReactionAdd', (reaction, user) => {
         async function links() {
             const dm = reaction.users.map(r => r.id);
             const dmsend = dm[dm.length-1];
-            const linkid = ((reaction.message.embeds).map(r => r.footer))[0]
+            const linkid = ((reaction.message.embeds).map(r => r.author))[0]
             const response = await linkdb_channel.fetchMessages()
             const linksend = response.map(r => r.content)
             linksend.forEach(function (message) {
