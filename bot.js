@@ -36,14 +36,14 @@ client.on ('message', message => {
                     message.react('🔗')
                     });
                 linkdb_channel.send(message.author.id + ' ' + link);
-                }
             }
             else {
                 message.channel.send('Please include \"https://\" in your link.');
             }
+        }
         else {      
             message.author.send('You are not authorized to post links.').catch(console.error);
-            }
+        }
     }
 });    
 
