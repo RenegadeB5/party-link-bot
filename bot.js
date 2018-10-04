@@ -53,7 +53,7 @@ client.on('messageReactionAdd', (reaction, user) => {
         async function links() {
             const dm = reaction.users.map(r => r.id);
             const dmsend = dm[dm.length-1];
-            const linkid = ((reaction.message.embeds).map(r => r.author))[0]
+            const linkid = (((reaction.message.embeds).map(r => r.author))[0])
             const response = await linkdb_channel.fetchMessages()
             const linksend = response.map(r => r.content)
             linksend.forEach(function (message) {
