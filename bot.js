@@ -49,7 +49,6 @@ client.on ('message', message => {
 
 client.on('messageReactionAdd', (reaction, user) => {
     if(reaction.emoji.name === '🔗') {
-        t
         async function links() {
             const dm = reaction.users.map(r => r.id);
             const dmsend = dm[dm.length-1];
